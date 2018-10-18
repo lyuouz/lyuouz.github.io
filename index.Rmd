@@ -21,3 +21,21 @@ I can link directly to my [about page](about.html)
 <img src="image/DSC00679.jpg" style="width:75%">
 
 giving the path to the image for the website
+
+I can add code
+
+```{r}
+library(tidyverse)
+
+tibble(
+  x = 1:10,
+  y = x+2
+)
+
+
+
+```
+
+
+
+
