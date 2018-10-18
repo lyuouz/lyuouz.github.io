@@ -1,0 +1,23 @@
+---
+title: "Holy cow!"
+---
+
+### I have a webpage!
+
+And I can put all kinds of stuff on it!
+
+I can add additional text.
+
+I **could**
+
+### Add some links
+
+I like [google](http://www.google.com)
+
+I can link directly to my [about page](about.html)
+
+### Add picture of Ippudo
+
+<img src="image/DSC00679.jpg" style="width:75%">
+
+giving the path to the image for the website
