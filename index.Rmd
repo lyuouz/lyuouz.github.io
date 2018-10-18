@@ -24,18 +24,7 @@ giving the path to the image for the website
 
 I can add code
 
-```{r}
-library(tidyverse)
-
-tibble(
-  x = 1:10,
-  y = x+2
-)
-
-
-
-```
-
+default themes are here: [Bootswatch](https://bootswatch.com/)
 
 
 

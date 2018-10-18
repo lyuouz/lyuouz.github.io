@@ -1,0 +1,21 @@
+---
+title: "code"
+author: "Lyuou Zhang"
+date: "10/18/2018"
+output: html_document
+---
+
+```{r}
+
+library(tidyverse)
+
+tibble(
+  x = 1:10,
+  y = x+2
+)
+
+
+
+```
+
+[code](code.html)
