@@ -6,7 +6,7 @@ title: "Welcome!"
 
 Hi this is Lyuou! I am a student at Columbia School of Public Health. I live in New York with two roommates and a puppy, Stacey. This is her picture.
 
-<img src="image/WechatIMG238.jpg" style="width:75%">
+<img src="image/WechatIMG238.jpeg" style="width:75%">
 
 link to my [instagram](https://www.instagram.com/lyuouzz/)
 
