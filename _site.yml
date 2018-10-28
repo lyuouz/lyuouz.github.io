@@ -5,8 +5,10 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Resume"
+      href: website/resume.pdf
     - text: "LinkedIn"
-    - href: https://www.linkedin.com/in/lyuou-zhang/
+      href: https://www.linkedin.com/in/lyuou-zhang/
     - icon: fa-envelope fa-lg
       href: mailto:<lyuouz@gmail.com>
     - icon: fa-github fa-lg
