@@ -4,12 +4,14 @@ title: "Welcome!"
 
 ### This is my webpage
 
-Hi this is Lyuou! I am a student at Columbia School of Public Health. I live in New York with two roommates and a puppy, Stacey. This is her picture.
+Hi this is Lyuou! I am a student at Columbia University Mailman School of Public Health. I currenty live in New York. 
 
-<img src="image/WechatIMG238.jpeg" style="width:75%">
+I am studying environmental health sciences. I am interested in doing research on topics such as air pollution, energy and sustainability. 
 
-link to my [instagram](https://www.instagram.com/lyuouzz/)
+Outside of schoolwork, I enjoy drawing, photography and music. Let me know if you have a similar interest!
 
-I love drawing, reading, music and photography. I will post things here about my life, please stay tuned!
+Here's a picture of me.
+
+<img src="image/headshot3.jpeg" style="width:50%">
 
 

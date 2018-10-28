@@ -5,10 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "Pictures of the day"
-      href: picture.html
-    - text: "Google"
-      href: https://www.google.com/
+    - text: "LinkedIn"
+    - href: https://www.linkedin.com/in/lyuou-zhang/
     - icon: fa-envelope fa-lg
       href: mailto:<lyuouz@gmail.com>
     - icon: fa-github fa-lg
