@@ -1,8 +1,0 @@
----
-title: "picture"
----
-
-## Pictures of the day
-
-[Oct 19, 2018](oct_19.html)
-
