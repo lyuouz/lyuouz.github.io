@@ -5,3 +5,5 @@ title: "About"
 ### Lyuou Zhang
 
 Hi I'm Lyuou! I am a student at Columbia University Mailman School of Public Health studying environmental health sciences. I also had a bachelor's degree in environmental science and engineering. 
+
+<img src="image/headshot3.jpeg" style="width:75%">
