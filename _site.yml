@@ -6,7 +6,7 @@ navbar:
     - text: "About"
       href: about.html
     - text: "Resume"
-      href: resume.pdf
+      href: resume.html
     - text: "LinkedIn"
       href: https://www.linkedin.com/in/lyuou-zhang/
     - icon: fa-envelope fa-lg
