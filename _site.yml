@@ -7,7 +7,7 @@ navbar:
       href: about.html
     - text: "Resume"
       href: resume.pdf
-    - text: "LinkedIn"
+    - icon: fa-linkedin
       href: https://www.linkedin.com/in/lyuou-zhang/
     - icon: fa-envelope fa-lg
       href: mailto:<lyuouz@gmail.com>
