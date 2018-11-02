@@ -29,6 +29,26 @@ insta <- instacart %>%
   select(-eval_set) %>% 
 sample_n(5000)
 
+bar_insta <- insta %>% 
+  group_by(aisle) %>% 
+  summarize(n_aisle = n()) %>% 
+  arrange(desc(n_aisle)) %>% 
+  top_n(15) %>% 
+  mutate(aisle = fct_reorder(aisle, n_aisle)) %>% 
+  plot_ly(x = ~aisle, y = ~n_aisle, type = 'bar', color = ~aisle)
+
+ggplotly(bar_insta)
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
 line_insta <- insta %>% 
   group_by(order_hour_of_day) %>% 
   summarize(n_order = n()) %>% 
@@ -43,24 +63,7 @@ line_insta <- insta %>%
 
 ggplotly(line_insta)
 
-```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
-```{r}
-
-bar_insta <- insta %>% 
-  group_by(aisle) %>% 
-  summarize(n_aisle = n()) %>% 
-  arrange(desc(n_aisle)) %>% 
-  top_n(15) %>% 
-  mutate(aisle = fct_reorder(aisle, n_aisle)) %>% 
-  plot_ly(x = ~aisle, y = ~n_aisle, type = 'bar', color = ~aisle)
-
-ggplotly(bar_insta)
 
 ```
 
