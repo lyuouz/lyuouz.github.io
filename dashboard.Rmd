@@ -13,65 +13,68 @@ library(p8105.datasets)
 library(tidyverse)
 library(plotly)
 library(forcats)
+library(rnoaa)
+library(lubridate)
 ```
 
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### The trend of maximum temperature over the years
 
 ```{r}
 set.seed(1)
 
-data("instacart")
+data("ny_noaa")
 
-insta <- instacart %>% 
-  select(-eval_set) %>% 
+noaa <- ny_noaa %>% 
+  mutate(
+    tmax = as.numeric(tmax),
+    tmax = tmax/10,
+    tmin = as.numeric(tmin),
+    tmin = as.numeric(tmin),
+    tmin = tmin/10,
+    prcp = prcp/10
+  ) %>% 
+  filter(!is.na(tmax) & !is.na(tmin)) %>% 
+  mutate(
+    year = year(as.Date(date,"%Y/%m/%d")),
+    month = month(as.Date(date, "%Y/%m/%d"))
+  ) %>% 
 sample_n(5000)
 
-bar_insta <- insta %>% 
-  group_by(aisle) %>% 
-  summarize(n_aisle = n()) %>% 
-  arrange(desc(n_aisle)) %>% 
-  top_n(15) %>% 
-  mutate(aisle = fct_reorder(aisle, n_aisle)) %>% 
-  plot_ly(x = ~aisle, y = ~n_aisle, type = 'bar', color = ~aisle)
-
-ggplotly(bar_insta)
-
+noaa %>% 
+  group_by(year) %>% 
+  summarize(mean_tmax = mean(tmax)) %>% 
+  plot_ly(x = ~year, y = ~mean_tmax, type = "scatter", mode = "lines")
 
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Chart B Average temperature by month
 
 ```{r}
 
-line_insta <- insta %>% 
-  group_by(order_hour_of_day) %>% 
-  summarize(n_order = n()) %>% 
-  ggplot(aes(x = order_hour_of_day, y = n_order)) +
-  geom_line() +
-  labs(
-    title = 'Number of orders change by time in 24 hours',
-    x = 'Time',
-    y = 'Number of orders'
-  ) +
-  theme_bw()
-
-ggplotly(line_insta)
-
+noaa %>% 
+  mutate(average_temperature = (tmax + tmin)/2) %>% 
+  group_by(month) %>% 
+  summarize(mean_temp = mean(average_temperature)) %>% 
+  plot_ly(x = ~month, y = ~mean_temp, type = 'bar') 
 
 ```
 
-### Chart C
+### The distribution of maximal and minimal temperature across stations
 
 ```{r}
 
-insta %>% 
-  group_by(aisle, order_dow) %>% 
-  plot_ly(x = ~order_dow, y = ~order_hour_of_day, type = 'box')
+p3 <- noaa %>%
+  select(id, tmax, tmin) %>% 
+  gather(key = observation, value = temp, tmax:tmin) %>% 
+  ggplot(aes(x = temp, fill = observation)) + geom_density(alpha = .5)
+  
+ggplotly(p3)
 
 ```
+
