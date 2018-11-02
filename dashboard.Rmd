@@ -60,7 +60,7 @@ noaa %>%
                        )) %>% 
   plot_ly(x = ~year, y = ~mean_tmax, type = "scatter", mode = "lines", 
           text = ~text_label) %>% 
-  layout(yaxis = p1_y)
+  layout(xaxis = p1_x, yaxis = p1_y)
 
 ```
 
@@ -75,6 +75,10 @@ p2_y <- list(
   title = 'Average temperature'
 )
 
+p2_x <- list(
+  title = 'Month'
+)
+
 noaa %>% 
   mutate(average_temperature = (tmax + tmin)/2) %>% 
   group_by(month) %>% 
@@ -84,7 +88,7 @@ noaa %>%
     text_label = str_c('month: ', month, '\nAverage temperature: ', mean_temp)
   ) %>% 
   plot_ly(x = ~month, y = ~mean_temp, type = 'bar', text = ~text_label) %>% 
-  layout(yaxis = p2_y)
+  layout(xaxis = p2_x, yaxis = p2_y)
 
 ```
 
@@ -92,11 +96,16 @@ noaa %>%
 
 ```{r}
 
+
 p3 <- noaa %>%
   select(id, tmax, tmin) %>% 
   gather(key = observation, value = temp, tmax:tmin) %>% 
   ggplot(aes(x = temp, fill = observation)) + geom_density(alpha = .5) +
-  theme_bw()
+  theme_bw() +
+  labs(
+    x = 'Temperature',
+    y = 'Density'
+  )
   
 ggplotly(p3)
 
