@@ -43,6 +43,14 @@ noaa <- ny_noaa %>%
   ) %>% 
 sample_n(5000)
 
+p1_y <- list(
+  title = 'Average maximum temperature'
+)
+
+p1_x <- list(
+  title = 'Year'
+)
+
 noaa %>% 
   group_by(year) %>% 
   summarize(mean_tmax = mean(tmax)) %>% 
@@ -51,7 +59,8 @@ noaa %>%
     text_label = str_c("Year: ", year, "\nMaximum temperature: ", mean_tmax
                        )) %>% 
   plot_ly(x = ~year, y = ~mean_tmax, type = "scatter", mode = "lines", 
-          text = ~text_label)
+          text = ~text_label) %>% 
+  layout(yaxis = p1_y)
 
 ```
 
@@ -62,6 +71,10 @@ Column {data-width=350}
 
 ```{r}
 
+p2_y <- list(
+  title = 'Average temperature'
+)
+
 noaa %>% 
   mutate(average_temperature = (tmax + tmin)/2) %>% 
   group_by(month) %>% 
@@ -70,7 +83,8 @@ noaa %>%
     mean_temp = round(mean_temp, digits = 2),
     text_label = str_c('month: ', month, '\nAverage temperature: ', mean_temp)
   ) %>% 
-  plot_ly(x = ~month, y = ~mean_temp, type = 'bar', text = ~text_label) 
+  plot_ly(x = ~month, y = ~mean_temp, type = 'bar', text = ~text_label) %>% 
+  layout(yaxis = p2_y)
 
 ```
 
@@ -81,7 +95,8 @@ noaa %>%
 p3 <- noaa %>%
   select(id, tmax, tmin) %>% 
   gather(key = observation, value = temp, tmax:tmin) %>% 
-  ggplot(aes(x = temp, fill = observation)) + geom_density(alpha = .5)
+  ggplot(aes(x = temp, fill = observation)) + geom_density(alpha = .5) +
+  theme_bw()
   
 ggplotly(p3)
 
