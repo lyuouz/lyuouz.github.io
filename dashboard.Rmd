@@ -64,7 +64,6 @@ line_insta <- insta %>%
 ggplotly(line_insta)
 
 
-
 ```
 
 ### Chart C
