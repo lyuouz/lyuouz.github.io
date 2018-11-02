@@ -66,7 +66,11 @@ noaa %>%
   mutate(average_temperature = (tmax + tmin)/2) %>% 
   group_by(month) %>% 
   summarize(mean_temp = mean(average_temperature)) %>% 
-  plot_ly(x = ~month, y = ~mean_temp, type = 'bar') 
+  mutate(
+    mean_temp = round(mean_temp, digits = 2),
+    text_label = str_c('month: ', month, '\nAverage temperature: ', mean_temp)
+  ) %>% 
+  plot_ly(x = ~month, y = ~mean_temp, type = 'bar', text = ~text_label) 
 
 ```
 
