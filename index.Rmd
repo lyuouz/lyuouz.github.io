@@ -10,5 +10,5 @@ Outside of schoolwork, I enjoy drawing, photography and music. Let me know if yo
 
 Feel free to navigate through the tabs on the up right for my LinkedIn page, my Github account or shoot me an email.
 
-
+Here's the [flex dashboard](dashboard.html)
 

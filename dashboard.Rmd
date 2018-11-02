@@ -1,0 +1,75 @@
+---
+title: "Dashboard"
+
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+library(forcats)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+set.seed(1)
+
+data("instacart")
+
+insta <- instacart %>% 
+  select(-eval_set) %>% 
+sample_n(5000)
+
+line_insta <- insta %>% 
+  group_by(order_hour_of_day) %>% 
+  summarize(n_order = n()) %>% 
+  ggplot(aes(x = order_hour_of_day, y = n_order)) +
+  geom_line() +
+  labs(
+    title = 'Number of orders change by time in 24 hours',
+    x = 'Time',
+    y = 'Number of orders'
+  ) +
+  theme_bw()
+
+ggplotly(line_insta)
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+bar_insta <- insta %>% 
+  group_by(aisle) %>% 
+  summarize(n_aisle = n()) %>% 
+  arrange(desc(n_aisle)) %>% 
+  top_n(15) %>% 
+  mutate(aisle = fct_reorder(aisle, n_aisle)) %>% 
+  plot_ly(x = ~aisle, y = ~n_aisle, type = 'bar', color = ~aisle)
+
+ggplotly(bar_insta)
+
+```
+
+### Chart C
+
+```{r}
+
+insta %>% 
+  group_by(aisle, order_dow) %>% 
+  plot_ly(x = ~order_dow, y = ~order_hour_of_day, type = 'box')
+
+```
