@@ -46,7 +46,12 @@ sample_n(5000)
 noaa %>% 
   group_by(year) %>% 
   summarize(mean_tmax = mean(tmax)) %>% 
-  plot_ly(x = ~year, y = ~mean_tmax, type = "scatter", mode = "lines")
+  mutate(
+    mean_tmax = round(mean_tmax, digits = 2),
+    text_label = str_c("Year: ", year, "\nMaximum temperature: ", mean_tmax
+                       )) %>% 
+  plot_ly(x = ~year, y = ~mean_tmax, type = "scatter", mode = "lines", 
+          text = ~text_label)
 
 ```
 
